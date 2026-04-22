@@ -22,11 +22,16 @@ body {
     radial-gradient(circle at 88% 0%, rgba(22, 115, 91, 0.16), transparent 30%),
     linear-gradient(180deg, #f7fafc 0%, #eef4f8 100%);
   color: #17202a;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button,
 input {
   font: inherit;
+}
+
+button {
+  touch-action: manipulation;
 }
 
 .arena-card {

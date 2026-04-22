@@ -1,0 +1,28 @@
+{
+  "name": "Wealthcube Learning Arena",
+  "short_name": "Wealthcube",
+  "description": "Offline-ready mutual fund flashcard training arena.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7FAFC",
+  "theme_color": "#16735B",
+  "categories": ["education", "finance", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Flashcards",
+      "short_name": "Flashcards",
+      "url": "/flashcards",
+      "icons": [{ "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    }
+  ]
+}
