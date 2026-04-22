@@ -55,29 +55,29 @@ export default function HomePage() {
         <div>
           <div className="mb-8 flex items-start justify-between gap-4">
             <div>
-              <h1 className="mt-3 max-w-2xl text-5xl font-black leading-none tracking-normal text-mint md:text-7xl">
+              <h1 className="hero-title mt-3 max-w-2xl text-5xl font-black leading-none tracking-normal md:text-7xl">
                 WEALTHCUBE LEARNING ARENA
               </h1>
             </div>
-            <span className="rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-600">
+            <span className="status-pill shrink-0 rounded-full px-3 py-2 text-xs font-bold text-slate-700">
               {connected ? "Live Supabase" : "Local demo"}
             </span>
           </div>
 
-          <form onSubmit={startSession} className="grid gap-3 rounded-lg border border-slate-200 bg-white p-3 md:grid-cols-[1fr_auto]">
+          <form onSubmit={startSession} className="liquid-tile grid gap-3 rounded-lg p-3 md:grid-cols-[1fr_auto]">
             <label className="sr-only" htmlFor="name">Name</label>
             <input
               id="name"
               value={name}
               onChange={(event) => setName(event.target.value)}
               placeholder="Enter learner name"
-              className="min-h-12 rounded-md border border-slate-200 px-4 text-base outline-none focus:border-cube focus:ring-4 focus:ring-blue-100"
+              className="liquid-input min-h-12 rounded-md px-4 text-base font-semibold text-ink outline-none placeholder:text-slate-400 focus:ring-4 focus:ring-emerald-100"
               maxLength={40}
             />
             <button
               type="submit"
               disabled={loading}
-              className="min-h-12 rounded-md bg-cube px-6 font-bold text-white transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60"
+              className="primary-action min-h-12 rounded-md px-6 font-bold text-white transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {loading ? "Starting..." : "Start Learning"}
             </button>
@@ -96,9 +96,9 @@ export default function HomePage() {
         <Panel title="Active Users" icon={<UsersRound size={19} />}>
           <div className="grid gap-2">
             {activeUsers.length ? activeUsers.slice(0, 8).map((user) => (
-              <div key={user.id} className="flex items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2">
+              <div key={user.id} className="liquid-tile flex items-center justify-between rounded-md px-3 py-2">
                 <span className="font-semibold text-ink">{user.name}</span>
-                <span className="h-2.5 w-2.5 rounded-full bg-mint" aria-label="Active" />
+                <span className="h-2.5 w-2.5 rounded-full bg-mint shadow-[0_0_14px_rgba(22,115,91,0.72)]" aria-label="Active" />
               </div>
             )) : <Empty label="No active learners yet" />}
           </div>
@@ -107,8 +107,8 @@ export default function HomePage() {
         <Panel title="Leaderboard" icon={<Trophy size={19} />}>
           <div className="grid gap-2">
             {leaderboard.length ? leaderboard.map((row, index) => (
-              <div key={`${row.user_id}-${index}`} className="grid grid-cols-[32px_1fr_auto] items-center gap-3 rounded-md border border-slate-200 bg-white px-3 py-2">
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-blue-50 text-sm font-black text-cube">{index + 1}</span>
+              <div key={`${row.user_id}-${index}`} className="liquid-tile grid grid-cols-[32px_1fr_auto] items-center gap-3 rounded-md px-3 py-2">
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-blue-100 to-emerald-100 text-sm font-black text-cube shadow-inner">{index + 1}</span>
                 <div className="min-w-0">
                   <p className="truncate font-bold text-ink">{row.name}</p>
                   <p className="text-xs font-semibold text-slate-500">{row.known_count}/{row.total_questions} known</p>
@@ -125,8 +125,8 @@ export default function HomePage() {
 
 function Metric({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-4">
-      <div className="mb-3 text-cube">{icon}</div>
+    <div className="liquid-tile rounded-lg p-4">
+      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-gradient-to-br from-emerald-100 to-blue-100 text-cube shadow-inner">{icon}</div>
       <p className="text-xs font-bold uppercase tracking-wide text-slate-500">{label}</p>
       <strong className="mt-1 block text-2xl font-black text-ink">{value}</strong>
     </div>
@@ -146,5 +146,5 @@ function Panel({ title, icon, children }: { title: string; icon: React.ReactNode
 }
 
 function Empty({ label }: { label: string }) {
-  return <div className="rounded-md border border-dashed border-slate-300 p-5 text-center text-sm font-semibold text-slate-500">{label}</div>;
+  return <div className="liquid-tile rounded-md border-dashed p-5 text-center text-sm font-semibold text-slate-500">{label}</div>;
 }

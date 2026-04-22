@@ -96,11 +96,11 @@ export default function FlashcardsPage() {
       <header className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="text-sm font-bold uppercase tracking-wide text-mint">Flashcard Arena</p>
-          <h1 className="text-3xl font-black text-ink md:text-5xl">Welcome, {current?.name}</h1>
+          <h1 className="hero-title text-3xl font-black md:text-5xl">Welcome, {current?.name}</h1>
         </div>
         <button
           onClick={() => router.push("/")}
-          className="rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700"
+          className="secondary-action rounded-md px-4 py-3 text-sm font-bold text-slate-700 transition hover:-translate-y-0.5"
         >
           Exit
         </button>
@@ -113,8 +113,8 @@ export default function FlashcardsPage() {
           <Stat label="Card" value={`${index + 1}/${cards.length}`} />
         </div>
 
-        <div className="mb-6 h-3 overflow-hidden rounded-full bg-slate-200">
-          <div className="h-full rounded-full bg-mint transition-all" style={{ width: `${progress}%` }} />
+        <div className="progress-rail mb-6 h-3 overflow-hidden rounded-full">
+          <div className="progress-fill h-full rounded-full transition-all" style={{ width: `${progress}%` }} />
         </div>
 
         {card ? (
@@ -125,45 +125,45 @@ export default function FlashcardsPage() {
               className="flip-scene block w-full text-left"
               aria-label="Flip flashcard"
             >
-              <div className={`flip-card relative min-h-[410px] w-full ${flipped ? "is-flipped" : ""}`}>
-                <div className="flip-face absolute inset-0 flex flex-col justify-between rounded-lg border border-slate-200 bg-white p-6 md:p-9">
+              <div className={`flip-card relative min-h-[430px] w-full ${flipped ? "is-flipped" : ""}`}>
+                <div className="flip-face liquid-tile absolute inset-0 flex flex-col justify-between rounded-lg p-6 md:p-9">
                   <div className="flex items-center justify-between gap-3">
-                    <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-black uppercase text-cube">{card.concept}</span>
-                    <span className="text-sm font-bold text-slate-500">{card.difficulty}</span>
+                    <span className="rounded-full bg-gradient-to-r from-blue-100 to-emerald-100 px-3 py-1 text-xs font-black uppercase text-cube shadow-inner">{card.concept}</span>
+                    <span className="status-pill rounded-full px-3 py-1 text-sm font-bold text-slate-600">{card.difficulty}</span>
                   </div>
                   <h2 className="text-2xl font-black leading-tight text-ink md:text-4xl">{card.question}</h2>
                   <p className="text-sm font-bold uppercase tracking-wide text-slate-400">Tap card to reveal</p>
                 </div>
 
-                <div className="flip-face flip-back absolute inset-0 flex flex-col justify-between rounded-lg border border-emerald-200 bg-emerald-50 p-6 md:p-9">
+                <div className="flip-face flip-back absolute inset-0 flex flex-col justify-between rounded-lg border border-white/70 bg-gradient-to-br from-emerald-50/90 via-white/70 to-blue-50/80 p-6 shadow-arena backdrop-blur-2xl md:p-9">
                   <div className="flex items-center justify-between gap-3">
-                    <span className="rounded-full bg-white px-3 py-1 text-xs font-black uppercase text-mint">Answer</span>
+                    <span className="status-pill rounded-full px-3 py-1 text-xs font-black uppercase text-mint">Answer</span>
                     <span className="text-sm font-bold text-emerald-700">{card.tags.slice(0, 3).join(" / ")}</span>
                   </div>
-                  <p className="text-2xl font-extrabold leading-snug text-emerald-950 md:text-4xl">{card.answer}</p>
+                  <p className="text-xl font-extrabold leading-snug text-emerald-950 md:text-4xl">{card.answer}</p>
                   <p className="text-sm font-bold uppercase tracking-wide text-emerald-700">Mark your recall below</p>
                 </div>
               </div>
             </button>
 
             <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-[56px_1fr_1fr_56px]">
-              <button onClick={() => move(-1)} className="grid min-h-12 place-items-center rounded-md border border-slate-200 bg-white text-slate-700" aria-label="Previous card">
+              <button onClick={() => move(-1)} className="secondary-action order-3 grid min-h-12 place-items-center rounded-md text-slate-700 transition hover:-translate-y-0.5 md:order-1" aria-label="Previous card">
                 <ArrowLeft size={21} />
               </button>
-              <button onClick={() => void mark(false)} className="flex min-h-12 items-center justify-center gap-2 rounded-md bg-red-600 px-4 font-black text-white">
+              <button onClick={() => void mark(false)} className="danger-action order-1 flex min-h-12 items-center justify-center gap-2 rounded-md px-4 font-black text-white transition hover:-translate-y-0.5 md:order-2">
                 <X size={20} /> Unknown
               </button>
-              <button onClick={() => void mark(true)} className="flex min-h-12 items-center justify-center gap-2 rounded-md bg-mint px-4 font-black text-white">
+              <button onClick={() => void mark(true)} className="success-action order-2 flex min-h-12 items-center justify-center gap-2 rounded-md px-4 font-black text-white transition hover:-translate-y-0.5 md:order-3">
                 <Check size={20} /> Known
               </button>
-              <button onClick={() => move(1)} className="grid min-h-12 place-items-center rounded-md border border-slate-200 bg-white text-slate-700" aria-label="Next card">
+              <button onClick={() => move(1)} className="secondary-action order-4 grid min-h-12 place-items-center rounded-md text-slate-700 transition hover:-translate-y-0.5 md:order-4" aria-label="Next card">
                 <ArrowRight size={21} />
               </button>
             </div>
 
             <button
               onClick={() => setFlipped(false)}
-              className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-md border border-slate-200 bg-white px-4 text-sm font-bold text-slate-700"
+              className="secondary-action mt-3 inline-flex min-h-11 items-center gap-2 rounded-md px-4 text-sm font-bold text-slate-700 transition hover:-translate-y-0.5"
             >
               <RotateCcw size={17} /> Reset Flip
             </button>
@@ -180,7 +180,7 @@ export default function FlashcardsPage() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-4">
+    <div className="liquid-tile rounded-lg p-4">
       <p className="text-xs font-bold uppercase tracking-wide text-slate-500">{label}</p>
       <strong className="mt-1 block text-2xl font-black text-ink">{value}</strong>
     </div>

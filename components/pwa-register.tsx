@@ -39,7 +39,7 @@ export function PwaRegister() {
   if (online && pending === 0) return null;
 
   return (
-    <div className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-md rounded-lg border border-slate-200 bg-white/95 px-4 py-3 text-center text-sm font-bold text-slate-700 shadow-arena backdrop-blur">
+    <div className="liquid-tile fixed inset-x-3 bottom-3 z-50 mx-auto max-w-md rounded-lg px-4 py-3 text-center text-sm font-bold text-slate-700">
       {online ? `${pending} offline update${pending === 1 ? "" : "s"} waiting to sync.` : "Offline mode: flashcards keep working and progress will sync later."}
     </div>
   );
