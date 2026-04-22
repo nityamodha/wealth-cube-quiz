@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MF Flashcards</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="study-panel" aria-label="Mutual fund flashcard trainer">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">India mutual fund training</p>
+            <h1>MF Flashcards</h1>
+          </div>
+          <div class="score-pill" aria-live="polite">
+            <span id="knownCount">0</span>/<span id="totalCount">0</span> known
+          </div>
+        </div>
+
+        <div class="stats-grid" aria-label="Study progress">
+          <div>
+            <span class="stat-label">Deck</span>
+            <strong id="deckCount">0</strong>
+          </div>
+          <div>
+            <span class="stat-label">Card</span>
+            <strong id="cardPosition">1</strong>
+          </div>
+          <div>
+            <span class="stat-label">Difficulty</span>
+            <strong id="difficultyLabel">Easy</strong>
+          </div>
+        </div>
+
+        <div class="filters" aria-label="Filters">
+          <label class="search-box">
+            <span>Search</span>
+            <input id="searchInput" type="search" placeholder="NAV, SIP, taxation..." />
+          </label>
+          <label>
+            <span>Concept</span>
+            <select id="conceptFilter"></select>
+          </label>
+          <label>
+            <span>Difficulty</span>
+            <select id="difficultyFilter">
+              <option value="All">All</option>
+              <option>Easy</option>
+              <option>Medium</option>
+              <option>Hard</option>
+            </select>
+          </label>
+        </div>
+
+        <article class="flashcard" id="flashcard">
+          <div class="card-face">
+            <div class="card-meta">
+              <span id="conceptBadge">Basics</span>
+              <span id="tagLine">mutual fund</span>
+            </div>
+            <h2 id="questionText"></h2>
+            <p id="answerText" class="answer" hidden></p>
+          </div>
+        </article>
+
+        <div class="controls" aria-label="Flashcard controls">
+          <button class="icon-button" id="prevBtn" type="button" aria-label="Previous card" title="Previous card">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <button id="revealBtn" type="button">Reveal Answer</button>
+          <button class="known-button" id="knownBtn" type="button">Mark Known</button>
+          <button class="icon-button" id="nextBtn" type="button" aria-label="Next card" title="Next card">
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+
+        <div class="secondary-controls">
+          <button id="shuffleBtn" type="button">Shuffle</button>
+          <button id="resetBtn" type="button">Reset Progress</button>
+        </div>
+      </section>
+
+      <aside class="deck-panel" aria-label="Revision list">
+        <div class="visual-card" aria-hidden="true">
+          <div class="bar-chart">
+            <i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="fund-line"></div>
+        </div>
+        <div class="deck-header">
+          <h2>Quick Revision</h2>
+          <span id="visibleCount">0 cards</span>
+        </div>
+        <div id="cardList" class="card-list"></div>
+      </aside>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
